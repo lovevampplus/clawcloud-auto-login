@@ -71,7 +71,9 @@ TG_CHAT_ID	your_chat_id	Telegram Chat ID
 CLAW_CLOUD_URL	https://eu-central-1.run.claw.cloud	可选,默认欧洲区
 
 📝 配置格式
+
 CLAW_ACCOUNTS=user1@gmail.com----pass123----SECRET1&user2@gmail.com----pass456----SECRET2
+
 格式说明:
 
 每个账号: 用户名----密码----2FA密钥(可选)
@@ -85,9 +87,11 @@ CLAW_ACCOUNTS=user1@gmail.com----pass123----SECRET1&user2@gmail.com----pass456--
 2个账号,都有 2FA:
 
 user1@gmail.com----password123----JBSWY3DPEHPK3PXP&user2@gmail.com----password456----ABCDEFGHIJKLMNOP
+
 2个账号,只有第1个有 2FA:
 
 user1@gmail.com----password123----JBSWY3DPEHPK3PXP&user2@gmail.com----password456
+
 3个账号,都没有 2FA:
 
 user1@gmail.com----password123&user2@gmail.com----password456&user3@gmail.com----password789
@@ -120,7 +124,7 @@ user1@gmail.com----password123&user2@gmail.com----password456&user3@gmail.com---
 点击右侧"运行"按钮可手动执行
 运行结果
 青龙面板中查看
-进入青龙面板 -> 定时任务 -> 找到Linux.DO 签到 -> 点击右侧的日志
+进入青龙面板 -> 定时任务 -> 找到 签到 -> 点击右侧的日志
 
 方法 1: 在青龙面板中安装(推荐)  
 
@@ -169,13 +173,14 @@ loguru
 
 名称: ClawCloud 自动登录
 
-命令: python3 /ql/data/scripts/clawcloud_login.py
+命令: task clawcloudrunifo.py
 
 定时规则: 30 8 * * * (每天 8:30)
 
 或者: 0 */6 * * * (每 6 小时)
 
 点击 确定
+<img width="527" height="447" alt="image" src="https://github.com/user-attachments/assets/b429dc14-8097-4a3e-aa14-0fe1f365cbc7" />
 
 ---
 
