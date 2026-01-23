@@ -1,4 +1,128 @@
-方法 1: 在青龙面板中安装(推荐)  ql-docker.py 下载直接上传到你armv8机子上 运行（我是n1盒子刷了软路由成功运行）
+ql-docker.py 可以单下载直接上传到你armv8机子上 运行（我是n1盒子刷了软路由成功运行）这个自动利用F2a  arm32位没弄了手上没有32位的机子了 玩客云
+
+ql-docker-plus.py  这个能看到款额
+
+青龙面板使用
+
+注意：如果是docker容器创建的青龙，请使用whyour/qinglong:debian镜像，latest（alpine）版本可能无法安装部分依赖
+
+依赖安装
+
+安装Python依赖
+
+进入青龙面板 -> 依赖管理 -> 安装依赖
+
+依赖类型选择python3
+
+自动拆分选择是
+``
+selenium
+pyotp
+requests
+loguru
+``
+
+点击确定
+
+安装 linux chromium 依赖
+
+青龙面板 -> 依赖管理 -> 安装Linux依赖
+
+名称填 chromium
+
+若安装失败，可能需要执行apt update更新索引（若使用docker则需进入docker容器执行）
+
+添加仓库
+
+进入青龙面板 -> 订阅管理 -> 创建订阅
+
+依次在对应的字段填入内容（未提及的不填）：
+
+名称：clawcloud 登陆
+
+类型：公开仓库
+
+链接：https://github.com/djkyc/clawcloud-auto-login.git
+
+分支：main
+
+定时类型：crontab
+
+定时规则(拉取上游代码的时间，每六小时一次，可以自由调整频率): 0 */6 * * *
+
+配置环境变量
+
+进入青龙面板 -> 环境变量 -> 创建变量
+
+环境变量配置完成!
+
+🎯 配置方式
+
+在青龙面板的环境变量中添加:
+
+变量名	值	说明  
+
+CLAW_ACCOUNTS	账号1----密码1----2FA密钥1&账号2----密码2----2FA密钥2	多账号配置
+
+TG_BOT_TOKEN	your_token	Telegram Bot Token
+
+TG_CHAT_ID	your_chat_id	Telegram Chat ID
+
+CLAW_CLOUD_URL	https://eu-central-1.run.claw.cloud	可选,默认欧洲区
+
+📝 配置格式
+CLAW_ACCOUNTS=user1@gmail.com----pass123----SECRET1&user2@gmail.com----pass456----SECRET2
+格式说明:
+
+每个账号: 用户名----密码----2FA密钥(可选)
+
+多个账号用 & 分隔
+
+2FA 密钥可以留空
+
+🎯 配置示例
+
+2个账号,都有 2FA:
+
+user1@gmail.com----password123----JBSWY3DPEHPK3PXP&user2@gmail.com----password456----ABCDEFGHIJKLMNOP
+2个账号,只有第1个有 2FA:
+
+user1@gmail.com----password123----JBSWY3DPEHPK3PXP&user2@gmail.com----password456
+3个账号,都没有 2FA:
+
+user1@gmail.com----password123&user2@gmail.com----password456&user3@gmail.com----password789
+
+🔧 青龙面板操作步骤
+
+进入青龙面板 → 环境变量
+
+点击 添加变量
+
+名称: CLAW_ACCOUNTS
+
+值: 按格式填写
+
+点击 确定
+✅ 优点
+✅ 密码不在脚本中明文存储
+✅ 便于管理和修改
+✅ 支持任意数量账号
+✅ 安全性更高
+📊 预期日志
+从环境变量 CLAW_ACCOUNTS 加载账号配置
+加载账号: user1@gmail.com
+加载账号: user2@gmail.com
+📊 共配置 2 个账号
+详细配置指南请查看文档 👇
+手动拉取脚本
+
+首次添加仓库后不会立即拉取脚本，需要等待到定时任务触发，当然可以手动触发拉取
+点击右侧"运行"按钮可手动执行
+运行结果
+青龙面板中查看
+进入青龙面板 -> 定时任务 -> 找到Linux.DO 签到 -> 点击右侧的日志
+
+方法 1: 在青龙面板中安装(推荐)  
 
 进入青龙面板
 
