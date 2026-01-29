@@ -3,7 +3,7 @@
 """
 ClawCloud 多账号自动保活脚本 - Selenium 版本
 适配青龙面板 ARM Docker 环境
-支持多账号、Cookie复用、2FA自动验证、Telegram 通知
+支持多账号、Cookie复用、2FA自动验证、Telegram 微信 通知
 """
 
 import os
@@ -794,7 +794,7 @@ class AutoLogin:
 
 if __name__ == "__main__":
     print("\n" + "="*60)
-    print("💻 抓云多账号自动保活 - Selenium 版本")
+    print("💻 ClawCloud多账号自动保活 - Selenium 版本")
     print("="*60 + "\n")
 
     # 检查账号配置
@@ -826,7 +826,7 @@ if __name__ == "__main__":
 
     # 发送汇总通知
     if all_notify_contents:
-        final_msg = f"<b>💻 抓云自动保活 - Selenium版本</b>\n\n"
+        final_msg = f"💻 ClawCloud自动保活 - Selenium版本\n\n"
         final_msg += f"🔥一共有{len(ACCOUNTS)}个账号🔥\n\n"
         final_msg += "\n\n==========================\n\n".join(all_notify_contents)
         final_msg += "\n\n==========================\n\n"
